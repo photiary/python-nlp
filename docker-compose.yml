@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    image: python-starter-kit:latest
+    container_name: python-starter-kit-app
+    # 개발 환경에서는 호스트의 소스 코드를 마운트
+    volumes:
+      - ./app:/workspace/app
+      - ./data:/workspace/data
+    # 개발용 환경변수
+    environment:
+      - DEBUG=1
+      - ENVIRONMENT=development
+      - PYTHONPATH=/workspace/app
+    # 개발용 포트
+    ports:
+      - "8000:8000"
+      - "8001:8001"  # 디버거 포트
+    # 개발용 명령어 (핫 리로드 가능)
+    command: python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # 개발용 로깅
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    # 컨테이너 재시작 정책
+    restart: unless-stopped
