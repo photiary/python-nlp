@@ -5,8 +5,8 @@ services:
     build:
       context: .
       dockerfile: .devcontainer/Dockerfile
-    image: python-starter-kit:latest
-    container_name: python-starter-kit-app
+    image: python-nlp:latest
+    container_name: python-nlp-app
     # 개발 환경에서는 호스트의 소스 코드를 마운트
     volumes:
       - ./app:/workspace/app

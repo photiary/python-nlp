@@ -22,7 +22,7 @@ A modern Python development environment with Docker Compose setup.
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd python-starter-kit
+   cd python-nlp
    ```
 
 2. **Start the development environment**
@@ -61,7 +61,7 @@ docker-compose exec app python main.py
 ## Project Structure
 
 ```
-python-starter-kit/
+python-nlp/
 ├── app/
 │   ├── main.py          # Main application file
 │   └── requirements.txt # Python dependencies
